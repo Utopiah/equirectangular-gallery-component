@@ -1,6 +1,8 @@
 # equirectangular-gallery-component
 Display a diaporama of equirectangular photos as a configurable AFrame component
 
+![screenshot](https://fabien.benetou.fr/pub/home/360s/screenshot.jpg)
+
 Live examples :
 * server side previews https://fabien.benetou.fr/pub/home/360s/gallery.html?json-file=Hornu_July2018/files.json
 * client side previews (heavy!) https://fabien.benetou.fr/pub/home/360s/client-side-preview.html?json-file=Hornu_July2018%2Ffiles.json
