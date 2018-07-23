@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <!-- <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script> -->
+    <script src="https://aframe.io/aframe/dist/aframe-master.min.js"></script>
+    <script src="http://fabien.benetou.fr:1337/vorlon.js"></script>
+	<!-- doesn't support https, see http://vorlonjs.com/documentation/#vorlonjs-server-advanced-topics  -->
+  </head>
+  <body>
+<script>
+
+AFRAME.registerComponent('photosphere-via-url', {
+  init: function () {
+	this.el.setAttribute("src", AFRAME.utils.getUrlParameter('photosphere') );
+  }
+});
+
+</script>
+    <a-scene>
+      <a-sky photosphere-via-url></a-sky>
+    </a-scene>
+  </body>
+</html>

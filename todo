@@ -1,0 +1,3 @@
+- merge single image, gallery and video
+- add the tagging system cf https://vatelier.net/MyDemo/360sorter/
+- clarify parameters e.g. &interval=15 disable-timer=true
