@@ -1,61 +1,73 @@
 AFRAME.registerComponent('gallery-via-json', {
+	schema: {
+	    thumbWidth: {type: 'number', default: 100},
+	    thumbHeight: {type: 'number', default: 80},
+	    borderColor: {type: 'string', default: '#fff'},
+	    activeColor: {type: 'string', default: '#fff'},
+	    backgroundColor: {type: 'string', default: 'transparent'},
+	},
   init: function () {
+
+  	var data = this.data;
 	// Create our stylesheet
-// Create our stylesheet
-var style = document.createElement('style');
-style.innerHTML =
-	'.gallery {' +
-		'background: transparent;' +
-  	'margin: auto;' + 
-  	'text-align: center;' + 
-  	'position: absolute;' +
-  	'bottom: 0px;' +
-  	'width: 100%;' +
-  	'padding: 5px 0;' +
-  '}' +
-  '.scrolling { ' +
-  	'overflow-x: scroll;' +
-  	'overflow-y: hidden;' +
-  	'height: 112px;' +
-  	'white-space:nowrap' +
-  '} ' +
-  '.scrolling .thumb img { ' +  
-    'height: 100%; ' +
-    'min-width: 100%; ' +
-    'top: 50%; ' +
-    'left: 50%; ' +
-    'position: absolute; ' +
-    'transform: translate(-50%,-50%); ' +
-  '} ' +
-	'.scrolling .thumb { ' +
-    'width: 100px; ' +
-    'height: 80px; ' +
-    'overflow: hidden; ' +
-    'position: relative; ' +    
-    'margin: 5px; ' +
-    'width: 100px; ' +
-    'border: 1px solid #fff;' +
-    'box-shadow: 1px 1px 5px rgba(0,0,0,0.5); ' +
-    'opacity: 0.7;' +
-    'max-height: 80px;' +
-    'cursor: pointer;' +
-    'display:inline-block;' +
-    '*display:inline;' +
-    '*zoom:1;' +
-    'vertical-align:top;' +
-  '}' +
-  '.scrolling .thumb:hover, .scrolling .thumb.active {' +
-  	'box-shadow: 1px 1px 10px rgba(0,0,0,0.25);' +
-  	'opacity: 1;' +
-  	'transform: scale(1.1);' +
-  '}';
+	var style = document.createElement('style');
+	style.innerHTML =
+	  '.gallery {' +
+		'background: ' + data.backgroundColor + ';' +
+	  	'margin: auto;' + 
+	  	'text-align: center;' + 
+	  	'position: absolute;' +
+	  	'bottom: 0px;' +
+	  	'width: 100%;' +
+	  	'padding: 5px 0;' +
+	  '}' +
+	  '.scrolling { ' +
+	  	'overflow-x: scroll;' +
+	  	'overflow-y: hidden;' +
+	  	'height: ' + (data.thumbHeight+12) + 'px;' +
+	  	'white-space:nowrap' +
+	  '} ' +
+	  '.scrolling .thumb img { ' +  
+	    'height: 100%; ' +
+	    'min-width: 100%; ' +
+	    'top: 50%; ' +
+	    'left: 50%; ' +
+	    'position: absolute; ' +
+	    'transform: translate(-50%,-50%); ' +
+	  '} ' +
+		'.scrolling .thumb { ' +
+	    'width: ' + data.thumbWidth + 'px; ' +
+	    'height: ' + data.thumbHeight + 'px; ' +
+	    'overflow: hidden; ' +
+	    'position: relative; ' +    
+	    'margin: 5px; ' +
+	    'border: 1px solid ' + data.borderColor + ';' +
+	    'box-shadow: 1px 1px 5px rgba(0,0,0,0.5); ' +
+	    'opacity: 0.7;' +
+	    'max-height: ' + data.thumbHeight + 'px; ' +
+	    'cursor: pointer;' +
+	    'display:inline-block;' +
+	    '*display:inline;' +
+	    '*zoom:1;' +
+	    'vertical-align:top;' +
+	  '}' +
+	  '.scrolling .thumb:hover {' +
+	  	'box-shadow: 1px 1px 10px rgba(0,0,0,0.25);' +
+	  	'opacity: 1;' +
+	  	'transform: scale(1.1);' +
+	  '}' +
+	  '.scrolling .thumb.active {' +
+	    'border: 1px solid ' + data.activeColor + ';' +
+	  	'box-shadow: 1px 1px 10px rgba(0,0,0,0.25);' +
+	  	'opacity: 1;' +
+	  	'transform: scale(1.1);' +
+	  '}';
 
-// Get the first script tag
-var ref = document.querySelector('script');
+	// Get the first script tag
+	var ref = document.querySelector('script');
 
-// Insert our new styles before the first script tag
-ref.parentNode.insertBefore(style, ref);
-
+	// Insert our new styles before the first script tag
+	ref.parentNode.insertBefore(style, ref);
 
 	var i = 0;
 	if(window.location.hash) {
