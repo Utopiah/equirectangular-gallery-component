@@ -10,7 +10,7 @@ Live examples :
 Note the bash script for batch 360 conversion and preview.
 
 URL parameters :
-* `json-file` to point the the JSON file with the different images (array with relative path)
+* `json-file` to point the the JSON file with the different images (array with absolute or relative path)
 * `disable-timer` to disable the diaporama
 * `interval` to add in seconds until the next image
 * `enable-preview` to enable in VR preview of the next image
